@@ -27,7 +27,7 @@ export default function Home() {
   const [status, setStatus] = useState<any>({});
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/users`)
+    fetch(`/api/users`)
       .then((res) => res.json())
       .then((res) => setUsers(res.data));
   }, []);
@@ -36,11 +36,7 @@ export default function Home() {
     if (!users || users.length < 1) return;
 
     const usersname = users.map((user) => user.name).join(",");
-    fetch(
-      `${process.env.NEXT_PUBLIC_URL}/api/status?users=${encodeURIComponent(
-        usersname
-      )}`
-    )
+    fetch(`/api/status?users=${encodeURIComponent(usersname)}`)
       .then((res) => res.json())
       .then((res) => setStatus(res.data));
   }, [users]);
@@ -49,11 +45,7 @@ export default function Home() {
     if (!users || users.length < 1) return;
 
     const usersname = users.map((user) => user.name).join(",");
-    fetch(
-      `${process.env.NEXT_PUBLIC_URL}/api/status?users=${encodeURIComponent(
-        usersname
-      )}`
-    )
+    fetch(`/api/status?users=${encodeURIComponent(usersname)}`)
       .then((res) => res.json())
       .then((res) => setStatus(res.data));
   }, 3000);
@@ -75,9 +67,7 @@ export default function Home() {
           <div key={key}>
             <button
               onClick={() => {
-                fetch(
-                  `${process.env.NEXT_PUBLIC_URL}/api/heartbeat?user=${key}`
-                );
+                fetch(`/api/heartbeat?user=${key}`);
               }}
             >
               {key}
