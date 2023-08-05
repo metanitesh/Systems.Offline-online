@@ -4,8 +4,8 @@ import { Inter } from "@next/font/google";
 import styles from "./page.module.css";
 import { useEffect, useState, useRef } from "react";
 
-const useInterval = (callback: any, delay: any) => {
-  const savedCallback = useRef();
+const useInterval = (callback: () => void, delay: any) => {
+  const savedCallback: any = useRef();
 
   useEffect(() => {
     savedCallback.current = callback;
@@ -13,7 +13,7 @@ const useInterval = (callback: any, delay: any) => {
 
   useEffect(() => {
     function tick() {
-      savedCallback.current() as any;
+      savedCallback?.current();
     }
     if (delay !== null) {
       const id = setInterval(tick, delay);
