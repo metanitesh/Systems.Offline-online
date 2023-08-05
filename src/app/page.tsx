@@ -7,7 +7,8 @@ import { useEffect, useState, useRef } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 const url = "http://localhost:3000";
-export const useInterval = (callback: any, delay: any) => {
+
+const useInterval = (callback: any, delay: any) => {
   const savedCallback = useRef();
 
   useEffect(() => {
