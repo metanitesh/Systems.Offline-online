@@ -4,10 +4,6 @@ import { Inter } from "@next/font/google";
 import styles from "./page.module.css";
 import { useEffect, useState, useRef } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
-
-const url = "http://localhost:3000";
-
 const useInterval = (callback: any, delay: any) => {
   const savedCallback = useRef();
 
